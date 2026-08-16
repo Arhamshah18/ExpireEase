@@ -1,0 +1,15 @@
+node_modules/
+.env
+service-account.json
+*.log
+npm-debug.log*
+
+# Editor/OS junk
+.DS_Store
+.vscode/
+
+# Stray AI-assistant folders that shouldn't be tracked
+.agents/
+.claude/
+agent/
+skills-lock.json
