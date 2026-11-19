@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "ExpireEase",
+      "hasCanvas": false,
+      "bodyTextLen": 87,
+      "bodyTextHash": "64a9ebdcbf3c198c760a0b1389dd7822fd1a9125fd62e6b9ed5c08ebd3cfeca2",
+      "bodyTextPrefix": "ExpireEase Kitchen inventory and expiry tracker Sign in Register",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "ExpireEase",
+      "hasCanvas": false,
+      "bodyTextLen": 87,
+      "bodyTextHash": "64a9ebdcbf3c198c760a0b1389dd7822fd1a9125fd62e6b9ed5c08ebd3cfeca2",
+      "bodyTextPrefix": "ExpireEase Kitchen inventory and expiry tracker Sign in Register",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
