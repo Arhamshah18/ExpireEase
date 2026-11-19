@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", "Avenir Next", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-inset: var(--inset);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --color-surface-ink: var(--surface-ink);
+  --color-surface-muted: var(--surface-muted);
+  --color-inset-ink: var(--inset-ink);
+  --color-inset-muted: var(--inset-muted);
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #171717;
+  --surface: #06110c;
+  --inset: #1a1e18;
+  --ink: #ffffff;
+  --muted: #a3a3a3;
+  --line: #2a2a2a;
+  --accent: #a31c18;
+  --on-accent: #ffffff;
+  --danger: #a31c18;
+  --warn: #a31c18;
+  --mascot-ink: #06110c;
+  --mascot-shine: #ffffff;
+  --surface-ink: #ffffff;
+  --surface-muted: #a3a3a3;
+  --inset-ink: #ffffff;
+  --inset-muted: #a3a3a3;
+  --stage-safe: #06110c;
+  --stage-fresh: #06110c;
+  --stage-moderate: #a31c18;
+  --stage-urgent: #a31c18;
+  --stage-critical: #a31c18;
+  --stage-expired: #a31c18;
+  --stage-invalid: #a3a3a3;
+  --cat-produce: #12a36e;
+  --cat-dairy: #0e9ad6;
+  --cat-bakery: #d97706;
+  --cat-beverages: #7c5cd6;
+  --cat-pantry: #c9a227;
+  --cat-meat: #e14b5a;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 1px 0 color-mix(in oklab, var(--ink) 6%, transparent);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e7b0de;
+  --surface: #400849;
+  --inset: #f0c4e6;
+  --ink: #1f0a21;
+  --muted: #7c5b8a;
+  --line: #d4a3c8;
+  --accent: #ff5a0a;
+  --on-accent: #ffffff;
+  --danger: #ff5a0a;
+  --warn: #ff5a0a;
+  --surface-ink: #e7b0de;
+  --surface-muted: #d0bcd0;
+  --inset-ink: #2a0e2c;
+  --inset-muted: #7c5b8a;
+  --mascot-ink: #f0c4e6;
+  --mascot-shine: #ffffff;
+  --stage-safe: #0c8f5e;
+  --stage-fresh: #4d7c0f;
+  --stage-moderate: #a16207;
+  --stage-urgent: #c2410c;
+  --stage-critical: #be123c;
+  --stage-expired: #9f1239;
+  --stage-invalid: #b08ab0;
+  --cat-produce: #12a36e;
+  --cat-dairy: #0e9ad6;
+  --cat-bakery: #d97706;
+  --cat-beverages: #9b6dff;
+  --cat-pantry: #c9a227;
+  --cat-meat: #e14b5a;
+}
+
+/* Light mode turns surface cards into deep purple panels while the page stays
+   pale pink. Text on those panels must flip to light values, and text on the
+   light inset fields inside them must flip back to dark. */
+[data-theme="light"] .bg-surface {
+  color: var(--surface-ink);
+}
+
+[data-theme="light"] .bg-surface .text-ink {
+  color: var(--surface-ink);
+}
+
+[data-theme="light"] .bg-surface .text-muted {
+  color: var(--surface-muted);
+}
+
+[data-theme="light"] .bg-surface .bg-inset .text-ink,
+[data-theme="light"] .bg-inset .text-ink {
+  color: var(--inset-ink);
+}
+
+[data-theme="light"] .bg-surface .bg-inset .text-muted,
+[data-theme="light"] .bg-inset .text-muted {
+  color: var(--inset-muted);
+}
+
+[data-theme="light"] .bg-surface .bg-inset input::placeholder {
+  color: var(--inset-muted);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label:has(input[type="file"]) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  input, select, button {
+    font: inherit;
+  }
+
+  input[type="date"],
+  input[type="number"] {
+    min-width: 0;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+.mascot {
+  width: 6rem;
+  height: 6rem;
+  display: block;
+}
+
+.mascot-face {
+  fill: var(--accent);
+}
+
+.mascot-eye {
+  fill: var(--mascot-ink);
+}
+
+.mascot-shine {
+  fill: var(--mascot-shine);
+}
+
+.mascot-mouth {
+  fill: none;
+  stroke: var(--mascot-ink);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transition: d 180ms var(--ease);
+}
+
+.mascot-lid {
+  fill: var(--accent);
+  height: 0;
+  transform-box: fill-box;
+  transform-origin: center top;
+  transition: height 180ms var(--ease);
+}
+
+.mascot.is-shy .mascot-lid {
+  height: 18px;
+}
+
+.fade-in {
+  animation: fadeIn 420ms var(--ease) both;
+}
+
+.fade-line {
+  animation: fadeLine 360ms var(--ease) both;
+}
+
+.stock-card {
+  border: 1px solid var(--line);
+  border-left-width: 3px;
+  border-left-color: var(--stage-invalid);
+  background: var(--surface);
+}
+
+.stock-card[data-stage="Safe"] { border-left-color: var(--stage-safe); }
+.stock-card[data-stage="Fresh"] { border-left-color: var(--stage-fresh); }
+.stock-card[data-stage="Moderate"] { border-left-color: var(--stage-moderate); }
+.stock-card[data-stage="Urgent"] { border-left-color: var(--stage-urgent); }
+.stock-card[data-stage="Critical"] { border-left-color: var(--stage-critical); }
+.stock-card[data-stage="Expired"] { border-left-color: var(--stage-expired); }
+
+.stage-badge {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: transparent;
+}
+
+.stage-badge[data-stage="Safe"] {
+  color: var(--stage-safe);
+  border-color: color-mix(in oklab, var(--stage-safe) 35%, transparent);
+  background: color-mix(in oklab, var(--stage-safe) 12%, transparent);
+}
+.stage-badge[data-stage="Fresh"] {
+  color: var(--stage-fresh);
+  border-color: color-mix(in oklab, var(--stage-fresh) 35%, transparent);
+  background: color-mix(in oklab, var(--stage-fresh) 12%, transparent);
+}
+.stage-badge[data-stage="Moderate"] {
+  color: var(--stage-moderate);
+  border-color: color-mix(in oklab, var(--stage-moderate) 35%, transparent);
+  background: color-mix(in oklab, var(--stage-moderate) 12%, transparent);
+}
+.stage-badge[data-stage="Urgent"] {
+  color: var(--stage-urgent);
+  border-color: color-mix(in oklab, var(--stage-urgent) 35%, transparent);
+  background: color-mix(in oklab, var(--stage-urgent) 12%, transparent);
+}
+.stage-badge[data-stage="Critical"],
+.stage-badge[data-stage="Expired"] {
+  color: var(--stage-critical);
+  border-color: color-mix(in oklab, var(--stage-critical) 35%, transparent);
+  background: color-mix(in oklab, var(--stage-critical) 12%, transparent);
+}
+
+.track {
+  height: 0.375rem;
+  border-radius: 999px;
+  background: var(--inset);
+  overflow: hidden;
+}
+
+.track-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--stage-invalid);
+  transform-origin: left center;
+  animation: growX 700ms var(--ease) both;
+}
+
+.track-fill[data-stage="Safe"] { background: var(--stage-safe); }
+.track-fill[data-stage="Fresh"] { background: var(--stage-fresh); }
+.track-fill[data-stage="Moderate"] { background: var(--stage-moderate); }
+.track-fill[data-stage="Urgent"] { background: var(--stage-urgent); }
+.track-fill[data-stage="Critical"] { background: var(--stage-critical); }
+.track-fill[data-stage="Expired"] { background: var(--stage-expired); }
+
+.alert-critical {
+  color: var(--danger);
+  background: color-mix(in oklab, var(--danger) 10%, transparent);
+  border: 1px solid color-mix(in oklab, var(--danger) 28%, transparent);
+}
+
+.donut-spin {
+  transform-origin: 80px 80px;
+  animation: spinReveal 1.15s var(--ease) both;
+}
+
+.climb-bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: climbBar 800ms var(--ease) both;
+  background: var(--cat, var(--accent));
+}
+
+.climb-bar[data-cat="Produce"] { --cat: var(--cat-produce); }
+.climb-bar[data-cat="Dairy"] { --cat: var(--cat-dairy); }
+.climb-bar[data-cat="Bakery"] { --cat: var(--cat-bakery); }
+.climb-bar[data-cat="Beverages"] { --cat: var(--cat-beverages); }
+.climb-bar[data-cat="Pantry"] { --cat: var(--cat-pantry); }
+.climb-bar[data-cat="Meat/Seafood"] { --cat: var(--cat-meat); }
+
+.swatch[data-cat="Produce"] { background: var(--cat-produce); }
+.swatch[data-cat="Dairy"] { background: var(--cat-dairy); }
+.swatch[data-cat="Bakery"] { background: var(--cat-bakery); }
+.swatch[data-cat="Beverages"] { background: var(--cat-beverages); }
+.swatch[data-cat="Pantry"] { background: var(--cat-pantry); }
+.swatch[data-cat="Meat/Seafood"] { background: var(--cat-meat); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeLine {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes growX {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes spinReveal {
+  from { transform: rotate(-200deg); opacity: 0.35; }
+  to { transform: rotate(-90deg); opacity: 1; }
+}
+
+@keyframes climbBar {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-line,
+  .track-fill,
+  .donut-spin,
+  .climb-bar,
+  .mascot-mouth,
+  .mascot-lid {
+    animation: none;
+    transition: none;
+  }
+
+  .climb-bar,
+  .track-fill {
+    transform: none;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .app-main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+}
